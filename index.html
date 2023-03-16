@@ -216,7 +216,7 @@
                 <p title="此处填写您开始稳定工作的周岁年龄，比如：24。"><span class="span1">开始稳定工作周岁：</span><input id="zhousui"
                         type="text"><span> 岁</span></p>
                 <p title="假如您目前稳定工作的每年年底存款是2W，如果以后不工作在老家生活，每年支出为1W，那么此处应该填写2（2W/1W），此计算只适用于个人生活。"><span
-                        class="span1">每年存款够几年生活开支：</span><input id="kaizhi" type="text"><span> 年</span></p>
+                        class="span1">每年存款够几年生活开支：</span><input id="jinian" type="text"><span> 年</span></p>
                 <p><span class="span1">现在周岁：</span><input id="nowzhousui" type="text"><span> 岁</span></p>
                 <div><a class="jisuanBtn" onclick="jisuanZero(1)">计算</a><a onclick="jisuanZero(2)"
                         class="qingkongBtn">清空</a></div>
@@ -339,12 +339,12 @@
     function jisuanZero(x) {
         if (x == 1) {
             var zhousui = new BigNumber(document.getElementById("zhousui").value);
-            var kaizhi = new BigNumber(document.getElementById("kaizhi").value);
+            var jinian = new BigNumber(document.getElementById("jinian").value);
             var nowzhousui = new BigNumber(document.getElementById("nowzhousui").value);
             var start = zhousui;
             var end = 60;
-            console.log(zhousui + " : " + kaizhi);
-            if (zhousui.isNaN(NaN) || kaizhi.isNaN(NaN)) {
+            console.log(zhousui + " : " + jinian);
+            if (zhousui.isNaN(NaN) || jinian.isNaN(NaN)) {
                 document.getElementById("tuixiunianli").value = "NaN";
                 return;
             }
@@ -352,14 +352,10 @@
                 alert("周岁不能小于18岁或大于60岁");
                 return;
             }
-            if (kaizhi % 1 != 0) {
-                alert("每年存款够几年生活开支必须是整数");
-                return;
-            }
             while (true) {
                 start++;
-                end -= kaizhi;
-                if (start == end || Math.abs(start - end) <= kaizhi) {
+                end -= jinian;
+                if (start == end || Math.abs(start - end) <= (jinian < 1 ? 1 : jinian)) {
                     console.log(start + " : " + end);
                     document.getElementById("tuixiunianli").value = start;
                     document.getElementById("julituixiu").value = start - nowzhousui;
@@ -368,7 +364,7 @@
             }
         } else if (x == 2) {
             document.getElementById("zhousui").value = "";
-            document.getElementById("kaizhi").value = "";
+            document.getElementById(" jinian").value = "";
             document.getElementById("nowzhousui").value = "";
             document.getElementById("tuixiunianli").value = "";
             document.getElementById("julituixiu").value = "";
