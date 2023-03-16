@@ -188,7 +188,7 @@
             <!-- <span class="three" onclick="change(3)"><a>定投</a></span> -->
             <!-- <span class="four" onclick="change(4)"><a>财务自由计算</a></span> -->
         </div>
-        
+
         <div class="bottom">
             <div class="box-zero">
                 <p><span class="span1">开始稳定工作周岁：</span><input id="zhousui" type="text"><span> 岁</span></p>
@@ -201,7 +201,7 @@
 
             <div class="box-one none">
                 <p><span class="span1">本金：</span><input id="benjin" type="text"><span> 元</span></p>
-                <p><span class="span1">年化收益率：</span><input id="shouyilv" type="text"><span>&nbsp; %</span></p>
+                <p><span class="span1">年化收益率：</span><input id="shouyilv" type="text"><span> %</span></p>
                 <p><span class="span1">投资年限：</span><input id="touzinianxian" type="text"><span> 年</span></p>
                 <div><a class="jisuanBtn" onclick="jisuanOne(1)">计算</a><a onclick="jisuanOne(2)"
                         class="qingkongBtn">清空</a></div>
@@ -313,6 +313,19 @@
             var kaizhi = new BigNumber(document.getElementById("kaizhi").value);
             var start = zhousui;
             var end = 60;
+            console.log(zhousui + " : " + kaizhi);
+            if (zhousui.isNaN(NaN) || kaizhi.isNaN(NaN)) {
+                document.getElementById("tuixiunianli").value = "NaN";
+                return;
+            }
+            if (zhousui > 60 || zhousui < 18) {
+                alert("周岁不能小于18岁或大于60岁");
+                return;
+            }
+            if (kaizhi % 1 != 0) {
+                alert("每年存款够几年生活开支必须是整数");
+                return;
+            }
             while (true) {
                 start++;
                 end -= kaizhi;
