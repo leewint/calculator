@@ -217,9 +217,11 @@
                         type="text"><span> 岁</span></p>
                 <p title="假如您目前稳定工作的每年年底存款是2W，如果以后不工作在老家生活，每年支出为1W，那么此处应该填写2（2W/1W），此计算只适用于个人生活。"><span
                         class="span1">每年存款够几年生活开支：</span><input id="kaizhi" type="text"><span> 年</span></p>
+                <p><span class="span1">现在周岁：</span><input id="nowzhousui" type="text"><span> 岁</span></p>
                 <div><a class="jisuanBtn" onclick="jisuanZero(1)">计算</a><a onclick="jisuanZero(2)"
                         class="qingkongBtn">清空</a></div>
                 <p class="last"><span class="span1">退休年龄：</span><input id="tuixiunianli" type="text"><span> 岁</span>
+                <p class="last"><span class="span1">距离退休还有：</span><input id="julituixiu" type="text"><span> 年</span>
                 </p>
             </div>
 
@@ -338,6 +340,7 @@
         if (x == 1) {
             var zhousui = new BigNumber(document.getElementById("zhousui").value);
             var kaizhi = new BigNumber(document.getElementById("kaizhi").value);
+            var nowzhousui = new BigNumber(document.getElementById("nowzhousui").value);
             var start = zhousui;
             var end = 60;
             console.log(zhousui + " : " + kaizhi);
@@ -359,6 +362,7 @@
                 if (start == end || Math.abs(start - end) <= kaizhi) {
                     console.log(start + " : " + end);
                     document.getElementById("tuixiunianli").value = start;
+                    document.getElementById("julituixiu").value = start - nowzhousui;
                     break;
                 }
             }
@@ -366,6 +370,7 @@
             document.getElementById("zhousui").value = "";
             document.getElementById("kaizhi").value = "";
             document.getElementById("tuixiunianli").value = "";
+            document.getElementById("julituixiu").value = "";
         }
     }
 
