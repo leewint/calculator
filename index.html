@@ -229,7 +229,8 @@
                 <p><span class="span1">投资年限：</span><input id="touzinianxian" type="text"><span> 年</span></p>
                 <div><a class="jisuanBtn" onclick="jisuanOne(1)">计算</a><a onclick="jisuanOne(2)"
                         class="qingkongBtn">清空</a></div>
-                <p class="last"><span class="span1">最终收益：</span><input id="zuizhongshouyi" type="text"><span> 元</span>
+                <p class="last"><span class="span1">收益：</span><input id="shouyi" type="text"><span> 元</span></p>
+                <p class="last"><span class="span1">最终资产：</span><input id="zuizhongzichan" type="text"><span> 元</span>
                 </p>
             </div>
 
@@ -375,21 +376,26 @@
             var shouyilvNum = new BigNumber(document.getElementById("shouyilv").value);
             var touzinianxianNum = new BigNumber(document.getElementById("touzinianxian").value);
             var shouyiNum = new BigNumber(1 + shouyilvNum / 100);
-            var zuizhongshouyi = benjinNum.multipliedBy(shouyiNum.pow(touzinianxianNum)).valueOf();
-            console.log(zuizhongshouyi);
-            if (String(zuizhongshouyi).indexOf(".") == -1) {
-                document.getElementById("zuizhongshouyi").value = zuizhongshouyi
-                console.log(zuizhongshouyi);
+            var zuizhongzichan = benjinNum.multipliedBy(shouyiNum.pow(touzinianxianNum)).valueOf();
+            var shouyi = zuizhongzichan - benjinNum;
+            console.log(zuizhongzichan);
+            if (String(zuizhongzichan).indexOf(".") == -1) {
+                document.getElementById("shouyi").value = shouyi
+                document.getElementById("zuizhongzichan").value = zuizhongzichan
+                console.log(zuizhongzichan);
             } else {
-                var splitArr = String(zuizhongshouyi).split('.');
-                document.getElementById("zuizhongshouyi").value = splitArr[0] + '.' + splitArr[1].substr(0, 3);
-                console.log(zuizhongshouyi);
+                var splitArr = String(zuizhongzichan).split('.');
+                document.getElementById("zuizhongzichan").value = splitArr[0] + '.' + splitArr[1].substr(0, 3);
+                var splitArr1 = String(shouyi).split('.');
+                document.getElementById("shouyi").value = splitArr1[0] + '.' + splitArr1[1].substr(0, 3);
+                console.log(zuizhongzichan);
             }
         } else if (x == 2) {
             document.getElementById("benjin").value = "";
             document.getElementById("shouyilv").value = "";
             document.getElementById("touzinianxian").value = "";
-            document.getElementById("zuizhongshouyi").value = "";
+            document.getElementById("shouyi").value = "";
+            document.getElementById("zuizhongzichan").value = "";
         }
     }
 
