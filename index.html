@@ -62,7 +62,29 @@
             box-shadow: 3px 4px 5px #d3d4d6;
         }
 
-        .box-zero p {
+        .box-zero p,
+        .box-one p,
+        .box-two p,
+        .box-three p,
+        .box-four p {
+            font: 15px;
+            color: #333;
+            text-align: right;
+            line-height: 40px;
+        }
+
+        .box-zero>div,
+        .box-one>div,
+        .box-two>div,
+        .box-three>div,
+        .box-four>div {
+            padding-right: 20px;
+            padding-top: 10px;
+            box-sizing: border-box;
+            text-align: right;
+        }
+
+        /* .box-zero p {
             font: 15px;
             color: #333;
             text-align: right;
@@ -88,7 +110,7 @@
             padding-top: 10px;
             box-sizing: border-box;
             text-align: right;
-        }
+        } */
 
         input {
             width: 185px;
@@ -124,7 +146,7 @@
             margin-top: 10px;
         }
 
-        .box-two p {
+        /* .box-two p {
             font: 15px;
             color: #333;
             text-align: right;
@@ -164,7 +186,7 @@
             padding-top: 10px;
             box-sizing: border-box;
             text-align: right;
-        }
+        } */
 
         .active {
             border-bottom: 1px solid #046ef2;
@@ -223,7 +245,7 @@
 
             <div class="box-three none">
                 <p><span class="span1">投资时长：</span><input id="year" type="text"><span> 年</span></p>
-                <p><span class="span1">年化收益率：</span><input id="per" type="text"><span>&nbsp; %</span></p>
+                <p><span class="span1">年化收益率：</span><input id="per" type="text"><span> %</span></p>
                 <p><span class="span1">每月存入：</span><input id="money" type="text"><span> 元</span></p>
                 <p><span class="span1">投资总收益：</span><input id="touzishouyi" type="text"><span> 元</span></p>
                 <div><a class="jisuanBtn" onclick="jisuanThree(1)">计算</a><a class="qingkongBtn"
