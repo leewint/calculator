@@ -352,7 +352,7 @@
                 alert("周岁不能小于18岁或大于60岁");
                 return;
             }
-            while (true) {
+            for (var i = 0; i < 100; i++) {
                 start++;
                 end -= jinian;
                 if (start == end || Math.abs(start - end) <= (jinian < 1 ? 1 : jinian)) {
